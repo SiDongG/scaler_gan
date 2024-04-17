@@ -80,6 +80,7 @@ def inference(gan: ScalerGANTrainer):
     """
     conf = gan.conf
     output_mel_dir = os.path.join(conf.artifacts_dir, MELS_NPY)
+    #output_mel_dir = 'hifi_gan/test_mel_files'
     audio_cropped_dir = os.path.join(conf.artifacts_dir, CROPPED_DIR)
     output_mel_plt_dir = os.path.join(conf.artifacts_dir, MELS_IMGS_DIR, G_PRED_DIR)
     output_wav_dir = os.path.join(conf.artifacts_dir, WAVS)
@@ -137,7 +138,17 @@ def inference_one_mel(
     input_mel = create_mel_from_audio(audio, conf.mel_params, conf.must_divide)
     inference_mel = generate_scaled_mel(gan, input_mel, scale, conf.must_divide)
 
-    np.save(file_numpy_path, inference_mel.cpu().data.numpy())
+    #np.save(file_numpy_path, inference_mel.cpu().data.numpy())
+    newfilepath = os.getcwd()
+    print(newfilepath)
+    hifipath = newfilepath + "\hifi_gan" + "\\" + "test_mel_files" + "\\" + infer_filename
+    print(hifipath)
+    np.save(hifipath, inference_mel.cpu().data.numpy())
+   # os.chdir('..')
+   # currentDirectoryPath = os.path.dirname(__file__)
+   # path = currentDirectoryPath + "//" + 'hifi_gan/test_mel_files'
+   # os.system(f'copy "{file_numpy_path}""{path}"')
+   # print(path)
 
     if conf.infer_plt:
         plot_inference(input_mel, inference_mel, infer_filename, output_mel_plt_dir)
