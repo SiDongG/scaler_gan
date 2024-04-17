@@ -9,5 +9,15 @@ This is an implementation of an algorithm that allows users to select arbitrary 
 This implemention is based on [ScalerGAN](https://github.com/MLSpeech/scaler_gan) and [Hi-Fi GAN](https://github.com/jik876/hifi-gan/tree/4769534d45265d52a904b850da5a622601885777)
 
 ## Steps
-1. Follow instruction in [ScalerGAN](https://github.com/MLSpeech/scaler_gan) 
+1. Follow instruction in [ScalerGAN](https://github.com/MLSpeech/scaler_gan), exceptionally, download LJ Speech Dataset and place under scaler_gan/data/wavs
+2. Follow instruction in [Hi-Fi GAN](https://github.com/jik876/hifi-gan/tree/4769534d45265d52a904b850da5a622601885777), exceptionally, the default generator model is [generator t2_v2](https://drive.google.com/drive/folders/1-eEYTB5Av9jNql0WGBlRoi-WH2J7bp5Y), --checkpointfile argument can be changed in TermProject.py
+   The Directory hierarchy should be:
+   --scaler_gan
+     --hifi_gan
+       --generated_files_from_mel
+       --test_mel_files
+3. Place the spoken content/audio files you want to arbitrarily time scale under directory scaler_gan/data/Project.
+4. Under scaler_gan (main) directory, run python TermProject.py
+5. A UI will appear that allows users to select audio files to time scale and choose arbitrary segments with "commit changes"
+6. Upon all audio segments are chosen with corresponding scaling factor, click "Complete Edits", a new wav file named "New_"+Originalwavfilename will be created that has its audio regions time scaled accordingly. 
 
