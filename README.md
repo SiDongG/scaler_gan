@@ -14,9 +14,9 @@ This implemention is based on [ScalerGAN](https://github.com/MLSpeech/scaler_gan
 
 3. The Directory hierarchy should be: <br>
    --scaler_gan<br>
-     --hifi_gan<br>
-       --generated_files_from_mel<br>
-       --test_mel_files<br>
+   ----hifi_gan<br>
+   ------generated_files_from_mel<br>
+   ------test_mel_files<br>
 4. Place the spoken content/audio files you want to arbitrarily time scale under directory scaler_gan/data/Project.
 5. Under scaler_gan (main) directory, run python TermProject.py
 6. A UI will appear that allows users to select audio files to time scale and choose arbitrary segments with "commit changes"
